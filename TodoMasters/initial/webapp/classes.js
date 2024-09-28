@@ -1,3 +1,5 @@
+import { observerMixin } from "./mixin";
+
 class TodoItem {
     constructor(text) {
         this.text = text;
