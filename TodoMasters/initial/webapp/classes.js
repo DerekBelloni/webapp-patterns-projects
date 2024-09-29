@@ -1,6 +1,6 @@
 import { observerMixin } from "./mixin.js";
 
-class TodoItem {
+export class TodoItem {
     constructor(text) {
         this.text = text;
     }
@@ -9,7 +9,7 @@ class TodoItem {
     }
 }
 
-class TodoList { // candidate for Singleton, only want one todo list
+export class TodoList { // candidate for Singleton, only want one todo list
     // Data
     #data = new Set();
     get items() { return this.#data }
@@ -28,7 +28,6 @@ class TodoList { // candidate for Singleton, only want one todo list
     static getInstance() {
         return this.instance;
     }
-
 
     // List Behavior
     add(item) {
