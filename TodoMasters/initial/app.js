@@ -1,5 +1,6 @@
 import { TodoList } from "./webapp/classes.js";
 import { CommandExecutor, Commands, Command } from "./webapp/commands.js";
+import { LocalStorage } from "./webapp/storage.js";
 
 globalThis.DOM = {};
 const DOM = globalThis.DOM;
@@ -37,4 +38,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     TodoList.getInstance().addObserver(renderList);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    LocalStorage.load();
+});
+
+document.addEventListener("keydown", event => {
+    if (event.ctrlKey && event.key === 'p') {
+        event.preventDefault();
+        const cmd = new Command(Commands.ADD);
+        CommandExecutor.execute(cmd);
+    }
 })
